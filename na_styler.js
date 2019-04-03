@@ -27,22 +27,24 @@ window.addEventListener("load", setStyles);
 //This section of code creates the function 'setStyles', which deals with setting the style rules & sheets.
 function setStyles() {
       var styleNum = randInt(5);
+      //This block of code creates the element 'link', sets its attributes, appends it to the document head, & stores it in the variable 'sheetLink'.
       var sheetLink = document.createElement("link");
       sheetLink.setAttribute("rel", "stylesheet");
       sheetLink.setAttribute("id", "fancySheet");
       sheetLink.setAttribute("href", "na_style_" + styleNum + ".css");
       document.head.appendChild(sheetLink);
+      //This block of code is much alike to the one above it, except the value is stored in the 'figBox' variable & is appended to the element with the id of 'box'.
       var figBox = document.createElement("figure");
       figBox.setAttribute("id", "styleThumbs");
       document.getElementById("box").appendChild(figBox);
 
-      //This block of code sets a different image for the webpage out of 5 different images, depending on which ine the user chooses. 
-      for (var i = 0; i <= 5; i++) {
+      //This block of code sets a different image for the webpage out of 5 different images, depending on which one the user chooses. 
+      for (var i = 0; i <= 4; i++) {
             var sheetImg = document.createElement("img");
             sheetImg.setAttribute("src", "na_small_" + [i] + ".png");
             sheetImg.setAttribute("alt", "na_style_" + [i] + ".css");
             sheetImg.addEventListener("click", function (e) {
-                  sheetLink.setAttribute("href", "na_style_" + e.target.alt + ".css");
+                  sheetLink.setAttribute("href", e.target.alt);
             });
             figBox.appendChild(sheetImg);
       }
